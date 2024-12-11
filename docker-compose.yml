@@ -5,7 +5,7 @@ services:
     image: nginx:1.26.0
     volumes:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./src:/var/www
+      - ./src/CoachtechFleaMarket:/var/www/CoachtechFleaMarket
     ports:
       - "80:80"
     depends_on:
@@ -16,14 +16,18 @@ services:
       context: ./docker/php
       dockerfile: dockerfile
     volumes:
-      - ./src:/var/www
+      - ./src/CoachtechFleaMarket:/var/www/CoachtechFleaMarket
+    ports:
+      - "5173:5173"
+
 
   cron:
     build:
       context: ./docker/cron
       dockerfile: dockerfile
     volumes:
-      - ./src:/var/www
+      - ./src/CoachtechFleaMarket:/var/www/CoachtechFleaMarket
+
     depends_on:
       - php-fpm
 
@@ -32,7 +36,8 @@ services:
       context: ./docker/supervisor
       dockerfile: dockerfile
     volumes:
-      - ./src:/var/www
+      - ./src/CoachtechFleaMarket:/var/www/CoachtechFleaMarket
+
     depends_on:
       - php-fpm
 
