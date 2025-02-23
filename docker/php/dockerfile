@@ -12,10 +12,9 @@ RUN apt update && apt install -y \
     default-mysql-client \
     zlib1g-dev \
     libzip-dev \
-    imagemagick libmagickwand-dev \
-    && pecl install imagick \
-    && docker-php-ext-install pdo_mysql zip \
-    && docker-php-ext-enable imagick
+    libpng-dev libjpeg-dev libfreetype6-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg
+    && docker-php-ext-install pdo_mysql zip gd \
 
 RUN apt install -y \
     nodejs \
