@@ -1,1 +1,0 @@
-* * * * * cd /var/www/CoachtechFleaMarket && php /var/www/CoachtechFleaMarket/artisan schedule:run >> /dev/null 2>&1

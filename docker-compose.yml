@@ -20,17 +20,6 @@ services:
     ports:
       - "5173:5173"
 
-
-  cron:
-    build:
-      context: ./docker/cron
-      dockerfile: dockerfile
-    volumes:
-      - ./src/CoachtechFleaMarket:/var/www/CoachtechFleaMarket
-
-    depends_on:
-      - php-fpm
-
   supervisor:
     build:
       context: ./docker/supervisor
